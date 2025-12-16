@@ -1,0 +1,143 @@
+/* COPILOT INSTRUCTIONS (DO NOT CONTINUE THIS COMMENT):
+Write FULL CSS ONLY (no explanations).
+
+Use ONLY these existing class names:
+.wrapper, .sidebar, .page,
+.row, .row-top, .row-mid, .row-bottom,
+.mid-left,
+.box, .box-small, .box-wide, .box-big, .box-long, .box-bottom-right
+
+Rules:
+- USE FLEXBOX (display:flex).
+- DO NOT use floats.
+- DO NOT use CSS grid.
+- NO bootstrap.
+- Add red borders for EVERY element above.
+- Use box-sizing: border-box.
+
+DESKTOP (min-width: 751px):
+Overall:
+- .wrapper centered with fixed width (e.g. 1000px) + padding.
+- Inside .wrapper: sidebar on the LEFT, page on the RIGHT using flex.
+- .sidebar has fixed width and tall height.
+- .page takes remaining width.
+
+Row top (.row-top):
+- display:flex
+- Contains EXACTLY 4 .box-small in ONE row.
+- Equal spacing between boxes.
+- No wrapping.
+
+Row mid (.row-mid):
+- display:flex
+- Left side: .mid-left (column flex) with 2 .box-wide stacked vertically.
+- Right side: .box-big to the RIGHT of .mid-left.
+- Box-big must NOT appear below mid-left.
+
+Row bottom (.row-bottom):
+- display:flex
+- .box-long on the LEFT.
+- .box-bottom-right on the RIGHT.
+- Same row.
+
+MOBILE (max-width: 750px):
+- EVERYTHING stacks vertically.
+- flex-direction: column where needed.
+- width: 100% for all boxes.
+- Sidebar appears first.
+- Keep red borders.
+
+END INSTRUCTIONS. */
+
+/* ===== START WRITING FLEXBOX CSS BELOW THIS LINE ONLY ===== */
+/* DO NOT WRITE ANY MORE COMMENTS. OUTPUT CSS RULES ONLY. */
+* {
+  box-sizing: border-box;
+}
+.wrapper {
+  display: flex;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  gap: 0;
+}
+.sidebar {
+  width: 220px;
+  border: 5px solid red;
+}
+.page {
+  flex: 1;
+  border: 5px solid red;
+  padding: 16px;
+}
+.row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.box {
+  border: 5px solid red;
+}
+.row-top {
+  display: flex;
+  gap: 16px;
+}
+.row-top .box-small {
+  flex: 1 1 0;
+  height: 140px;
+}
+.mid-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 0;
+}
+.box-wide {
+  height: 95px;
+}
+.mid-left .box-wide:last-child {
+  margin-bottom: 0;
+}
+.box-big {
+  flex: 1 1 0;
+  height: 210px;
+}
+.row-bottom .box-long {
+  flex: 0 0 calc(65% - 8px);
+  height: 160px;
+}
+.box-bottom-right {
+  flex: 0 0 calc(35% - 8px);
+  height: 160px;
+}
+@media (max-width: 750px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .page {
+    margin-left: 0;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .row-top .box-small,
+  .mid-left,
+  .box-big,
+  .row-bottom .box-long,
+  .box-bottom-right {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  .row-top .box-small:last-child,
+  .mid-left .box-wide:last-child,
+  .row-bottom .box-long:last-child,
+  .box-bottom-right:last-child {
+    margin-bottom: 0;
+  }
+}

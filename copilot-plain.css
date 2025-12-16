@@ -1,0 +1,114 @@
+/* COPILOT INSTRUCTIONS (DO NOT CONTINUE THIS COMMENT):
+Write FULL CSS ONLY (no explanations).
+Use ONLY these classes:
+.wrapper .sidebar .page .row .row-top .row-mid .row-bottom .mid-left
+.box .box-small .box-wide .box-big .box-long .box-bottom-right
+Rules: NO flexbox, NO grid, use floats/width/height, red borders, box-sizing:border-box, clearfix OK.
+Desktop: wrapper centered fixed width; sidebar float left fixed; page next to it.
+Row-top: 4 box-small in one row.
+Row-mid: mid-left float left with 2 box-wide stacked; box-big float right next to them.
+Row-bottom: box-long left, box-bottom-right right same row.
+Mobile max-width 750px: stack all vertically, width 100%, float none.
+END INSTRUCTIONS. */
+
+/* ===== START WRITING CSS BELOW THIS LINE ONLY ===== */
+* {
+  box-sizing: border-box;
+}
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: auto;
+}
+.sidebar {
+  width: 220px;
+  height: 600px;
+  border: 5px solid red;
+  float: left;
+}
+.page {
+  border: 5px solid red;
+  padding: 16px;
+  width: calc(100% - 236px);
+  float: left;
+  overflow: auto;
+}
+.row {
+  margin-bottom: 16px;
+  clear: both;
+  overflow: auto;
+}
+.box {
+  border: 5px solid red;
+}
+.row-top .box-small {
+  width: calc(25% - 12px);
+  height: 140px;
+  margin-right: 16px;
+  float: left;
+}
+.row-top .box-small:last-child {
+  margin-right: 0;
+}
+.mid-left {
+  width: calc(50% - 8px);
+  margin-right: 16px;
+  float: left;
+}
+.box-wide {
+  width: 100%;
+  height: 95px;
+  margin-bottom: 16px;
+}
+.mid-left .box-wide:last-child {
+  margin-bottom: 0;
+}
+.box-big {
+  width: calc(50% - 8px);
+  height: 210px;
+  float: right;
+}
+.row-bottom .box-long {
+  width: calc(65% - 8px);
+  height: 160px;
+  margin-right: 16px;
+  float: left;
+}
+.box-bottom-right {
+  width: calc(35% - 8px);
+  height: 160px;
+  float: right;
+}
+@media (max-width: 750px) {
+  .wrapper {
+    margin: 0;
+  }
+  .sidebar {
+    width: 100%;
+    float: none;
+    margin-bottom: 16px;
+  }
+  .page {
+    width: 100%;
+    margin-left: 0;
+    padding: 16px;
+  }
+  .row {
+    clear: both;
+  }
+  .row-top .box-small,
+  .mid-left,
+  .box-big,
+  .row-bottom .box-long,
+  .box-bottom-right {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+  .row-top .box-small:last-child,
+  .mid-left .box-wide:last-child,
+  .box-bottom-right {
+    margin-bottom: 0;
+  }
+}
